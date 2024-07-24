@@ -1,0 +1,65 @@
+fragment ListNode on Node {
+  id
+  name
+  description
+  hash
+  kind
+  scope
+  templates {
+    id
+    agent {
+      id
+    }
+  }
+}
+
+fragment GraphNodeNode on Node {
+  name
+  description
+  kind
+  hash
+  id
+  collections {
+    id
+    name
+  }
+  ...Ports
+  protocols {
+    name
+  }
+}
+
+fragment DetailNode on Node {
+  ...GraphNodeNode
+  templates {
+    id
+    interface
+  }
+  reservations {
+    ...ListReservation
+  }
+  dependencyGraph {
+    ...DependencyGraph
+  }
+  testCases {
+    ...ListTestCase
+  
+  }
+}
+
+
+fragment PrimaryNode on Node {
+
+  id
+    name
+    templates {
+      id
+      interface
+    }
+    args {
+      key
+      identifier
+      kind
+    }
+    description
+}

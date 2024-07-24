@@ -1,0 +1,38 @@
+fragment DetailClient on Client {
+  id
+  token
+  user {
+    username
+  }
+  kind
+  release {
+    ...ListRelease
+  }
+  oauth2Client {
+    authorizationGrantType
+    redirectUris
+  }
+  composition {
+    ...DetailComposition
+  }
+}
+
+fragment ListClient on Client {
+  id
+  user {
+    username
+  }
+  kind
+  release {
+    version
+    logo
+    app {
+      id
+      identifier
+      logo
+    }
+  }
+  composition {
+    id
+  }
+}

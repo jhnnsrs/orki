@@ -1,0 +1,61 @@
+fragment Binds on Binds {
+  templates
+}
+
+fragment PostmanReservation on Reservation {
+  title
+  status
+  id
+  reference
+  node {
+    ...Ports
+    name
+    description
+    hash
+  }
+  binds {
+    ...Binds
+  }
+  events {
+    ...ReservationEvent
+  }
+  viable
+  happy
+}
+
+fragment ReservationEvent on ReservationEvent {
+  id
+  kind
+  level
+  reservation {
+    id
+  }
+  createdAt
+}
+
+fragment ListReservation on Reservation {
+  id
+  title
+  status
+  reference
+  node {
+    name
+    description
+    hash
+  }
+}
+
+fragment DetailReservation on Reservation {
+  ...PostmanReservation
+  provisions {
+    ...ListProvision
+  }
+  node {
+    name
+    description
+    ...Ports
+  }
+  dependencyGraph {
+    ...DependencyGraph
+  }
+}

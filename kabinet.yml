@@ -1,0 +1,19 @@
+overwrite: true
+schema: "http://jhnnsrs-lab/kabinet/graphql"
+documents: "graphql/kabinet/**/*.graphql"
+generates:
+  components/library/kabinet/api/fragments.ts:
+    plugins:
+      - "fragment-matcher"
+  components/library/kabinet/api/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+    config:
+      withHooks: true
+      reactApolloVersion: 3
+      apolloReactHooksImportFrom: "@/componenets/library/kabinet/hooks"
+  components/library/kabinet/graphql.schema.json:
+    plugins:
+      - "introspection"

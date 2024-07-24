@@ -1,0 +1,6 @@
+fragment DetailComposition on Composition {
+    name
+    mappings {
+        ...ListServiceInstanceMapping
+    }
+}

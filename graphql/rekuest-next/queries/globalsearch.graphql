@@ -1,0 +1,12 @@
+query GlobalSearch(
+  $search: String
+  $noNodes: Boolean!
+  $pagination: OffsetPaginationInput
+) {
+  nodes: nodes(
+    filters: { search: $search }
+    pagination: $pagination
+  ) @skip(if: $noNodes) {
+    ...ListNode
+  }
+}

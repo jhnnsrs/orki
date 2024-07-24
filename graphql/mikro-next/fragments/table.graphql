@@ -1,0 +1,14 @@
+fragment Table on Table {
+  origins {
+    id
+  }
+  id
+  name
+  store {
+    ...ParquetStore
+  }
+}
+
+fragment ListTable on Table {
+  ...Table
+}

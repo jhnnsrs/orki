@@ -1,0 +1,26 @@
+query ListDefinitions {
+  definitions {
+    ...ListDefinition
+  }
+}
+
+query PrimaryDefinitions(
+  $pagination: OffsetPaginationInput
+  $identifier: String
+  $order: DefinitionOrder
+) {
+  definitions(
+    order: $order
+    pagination: $pagination
+    filters: {
+      demands: [
+        {
+          kind: ARGS
+          matches: [{ at: 0, kind: STRUCTURE, identifier: $identifier }]
+        }
+      ]
+    }
+  ) {
+    ...ListDefinition
+  }
+}

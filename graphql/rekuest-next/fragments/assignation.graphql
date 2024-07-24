@@ -1,0 +1,67 @@
+fragment PostmanAssignation on Assignation {
+  id
+  status
+  args
+  reference
+  events {
+    ...AssignationEvent
+  }
+  node {
+    hash
+    id
+    name
+    ...Ports
+  }
+  reservation {
+    id
+    title
+    node {
+      name
+    }
+  }
+  provision {
+    id 
+    template {
+      id
+    }
+  }
+  template {
+    id
+    interface
+  }
+  createdAt
+}
+
+fragment DetailAssignation on Assignation {
+  ...PostmanAssignation
+  provision {
+    template {
+      id
+      interface
+      params
+      extension
+    }
+  }
+}
+
+fragment AssignationEvent on AssignationEvent {
+  id
+  kind
+  level
+  returns
+  assignation {
+    id
+  }
+  progress
+  reference
+  createdAt
+  message
+}
+fragment AssignationChangeEvent on AssignationChangeEvent {
+  create {
+    ...PostmanAssignation
+  }
+  event {
+    ...AssignationEvent
+  }
+}

@@ -1,0 +1,4 @@
+fragment ListFlavour on Flavour {
+  id
+  name
+}

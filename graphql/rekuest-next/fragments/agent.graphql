@@ -1,0 +1,48 @@
+fragment Agent on Agent {
+  id
+  instanceId
+  status
+  provisions {
+    ...ListProvision
+  }
+  defaults: templates(filters: { extension: "default" }) {
+    ...ListTemplate
+  }
+  workflows: templates(filters: { extension: "reaktion_next" }) {
+    ...ListTemplate
+  }
+  state: template(interface: "__state__") {
+    ...DetailTemplate
+  }
+  registry {
+    app {
+      clientId
+    }
+    user {
+      id
+    }
+  }
+  extensions
+  name
+  active
+  connected
+  lastSeen
+}
+
+fragment ListAgent on Agent {
+  id
+  instanceId
+  status
+  active
+  connected
+  name
+  lastSeen
+  registry {
+    app {
+      clientId
+    }
+    user {
+      id
+    }
+  }
+}

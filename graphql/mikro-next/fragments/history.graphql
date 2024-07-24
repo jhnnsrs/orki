@@ -1,0 +1,17 @@
+fragment History on History {
+  id
+  during
+  kind
+  user {
+    sub
+  }
+  app {
+    clientId
+  }
+  date
+  effectiveChanges {
+    field
+    oldValue
+    newValue
+  }
+}

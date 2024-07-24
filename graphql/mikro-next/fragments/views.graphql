@@ -1,0 +1,127 @@
+fragment View on View {
+  xMin
+  xMax
+  yMin
+  yMax
+  tMin
+  tMax
+  cMin
+  cMax
+  zMin
+  zMax
+}
+
+fragment ChannelView on ChannelView {
+  ...View
+  id
+  channel {
+    ...Channel
+  }
+}
+
+fragment AffineTransformationView on AffineTransformationView {
+  ...View
+  id
+  affineMatrix
+  stage {
+    id
+    name
+  }
+}
+
+fragment RGBView on RGBView {
+  ...View
+  id
+  contexts {
+    id
+    name
+  }
+  name
+  image {
+    id
+    store {
+      ...ZarrStore
+    }
+  }
+  colorMap
+  contrastLimitMin
+  contrastLimitMax
+  gamma
+  rescale
+  active
+  fullColour
+  baseColor
+}
+
+fragment TimepointView on TimepointView {
+  ...View
+  id
+  msSinceStart
+  indexSinceStart
+  era {
+    ...Era
+  }
+}
+
+fragment OpticsView on OpticsView {
+  ...View
+  id
+  objective {
+    id
+    name
+    serialNumber
+  }
+  camera {
+    id
+    name
+    serialNumber
+  }
+  instrument {
+    id
+    name
+    serialNumber
+  }
+}
+
+fragment LabelView on LabelView {
+  ...View
+  id
+  fluorophore {
+    ...Fluorophore
+  }
+  primaryAntibody {
+    ...Antibody
+  }
+  secondaryAntibody {
+    ...Antibody
+  }
+}
+
+fragment AcquisitionView on AcquisitionView {
+  ...View
+  id
+  description
+  acquiredAt
+  operator {
+    sub
+  }
+}
+
+fragment WellPositionView on WellPositionView {
+  ...View
+  id
+  column
+  row
+  well {
+    id
+    rows
+    columns
+    name
+  }
+}
+
+fragment ContinousScanView on ContinousScanView {
+  ...View
+  id
+  direction
+}
